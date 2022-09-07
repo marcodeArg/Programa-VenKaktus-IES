@@ -22,5 +22,11 @@ namespace pryMoralesER
             frmClientes fClientes = new frmClientes();
             fClientes.ShowDialog();
         }
+
+        private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVendedores fVendedores = new frmVendedores();
+            fVendedores.ShowDialog();
+        }
     }
 }
