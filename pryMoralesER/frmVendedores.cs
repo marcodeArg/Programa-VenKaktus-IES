@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace pryMoralesER
 {
-    public partial class Form1 : Form
+    public partial class frmVendedores : Form
     {
-        public Form1()
+        public frmVendedores()
         {
             InitializeComponent();
         }
