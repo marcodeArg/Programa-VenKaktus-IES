@@ -60,7 +60,7 @@ namespace pryMoralesER
             string varFactura = cboTipo.Text;
             string varIDCliente = cboIDCliente.Text;
             string varIDVendedor = cboIDVendedor.Text;
-            string varNumero = cboTipo.Text;
+            string varNumero = mskNumero.Text;
             DateTime varFecha = dtpFecha.Value.Date;
             string varMonto = mskMonto.Text;
             string varMensaje;
@@ -69,8 +69,19 @@ namespace pryMoralesER
 
 
             StreamWriter swVentas = new StreamWriter("ventas.txt", true);
-            swVentas.Write(varMensaje);
+            swVentas.WriteLine(varMensaje);
             swVentas.Close();
+
+            MessageBox.Show("Cargado correctamente");
+
+            //Limpiar
+            cboIDCliente.SelectedIndex = -1;
+            cboIDVendedor.SelectedIndex = -1;
+            cboTipo.SelectedIndex = -1;
+            mskNumero.Clear();
+            mskMonto.Clear();
+
+
 
 
 

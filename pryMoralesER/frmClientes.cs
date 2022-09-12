@@ -29,83 +29,46 @@ namespace pryMoralesER
 
                 varMensaje = varID + "," + varNombre;
 
-                //Si el archivo existe, prosigo normal
-                if (File.Exists("clientes.txt"))
+                //Creo el archivo
+                StreamWriter swArchivoClientes = new StreamWriter("clientes.txt", true);
+                swArchivoClientes.Close();
+
+                StreamReader srClientes = new StreamReader("clientes.txt");
+
+                //Leo si el ID esta repetido
+                while (!srClientes.EndOfStream)
                 {
-                    StreamReader srClientes = new StreamReader("clientes.txt");
+                    string[] vecClientes = srClientes.ReadLine().Split(separador);
 
-                    //Leo si el ID esta repetido
-                    while (!srClientes.EndOfStream)
+                    if (vecClientes[0] == varID)
                     {
-                        string[] vecClientes = srClientes.ReadLine().Split(separador);
-
-                        if (vecClientes[0] == varID)
-                        {
-                            repetido = true;
-                        }
+                        repetido = true;
                     }
-
-                    srClientes.Close();
-
-                    if (!repetido)
-                    {
-                        StreamWriter swClientes = new StreamWriter("clientes.txt", true);
-                        swClientes.WriteLine(varMensaje);
-                        swClientes.Close();
-
-                        mskID.Clear();
-                        txtNombre.Clear();
-                        mskID.Focus();
-                    }
-                    else
-                    {
-                        MessageBox.Show("ID REPETIDA");
-                        mskID.Focus();
-                        mskID.SelectAll();
-                    }
-
-                    
                 }
 
-                //Si no existe primero creo el archivo
+                srClientes.Close();
+
+                //Si el ID no esta repetido...
+                if (!repetido)
+                {
+                    StreamWriter swClientes = new StreamWriter("clientes.txt", true);
+                    swClientes.WriteLine(varMensaje);
+                    swClientes.Close();
+
+                    mskID.Clear();
+                    txtNombre.Clear();
+                    mskID.Focus();
+                }
+                //Si el ID esta repetido...
                 else
                 {
-                    File.Create("clientes.txt");
-                    StreamReader srClientes = new StreamReader("clientes.txt");
-
-                    while (!srClientes.EndOfStream)
-                    {
-                        string[] vecClientes = srClientes.ReadLine().Split(separador);
-
-                        if (vecClientes[0] == varID)
-                        {
-                            repetido = true;
-                        }
-                    }
-
-                    srClientes.Close();
-
-                    if (!repetido)
-                    {
-                        StreamWriter swClientes = new StreamWriter("clientes.txt", true);
-                        swClientes.WriteLine(varMensaje);
-                        swClientes.Close();
-
-                        mskID.Clear();
-                        txtNombre.Clear();
-                        mskID.Focus();
-                    }
-                    else
-                    {
-                        MessageBox.Show("ID REPETIDA");
-                        mskID.Focus();
-                        mskID.SelectAll();
-                    }
+                    MessageBox.Show("ID REPETIDA");
+                    mskID.Focus();
+                    mskID.SelectAll();
                 }
-
-               
-
             }
+
+            //Si no se llenaron todos los campos necesarios
             else
             {
                 MessageBox.Show("Debe completar todos los campos!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);

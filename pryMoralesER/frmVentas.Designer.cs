@@ -80,8 +80,7 @@
             this.cboTipo.Items.AddRange(new object[] {
             "A",
             "B",
-            "C",
-            "D"});
+            "C"});
             this.cboTipo.Location = new System.Drawing.Point(172, 151);
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(102, 28);
