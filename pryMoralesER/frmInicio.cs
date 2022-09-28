@@ -34,5 +34,23 @@ namespace pryMoralesER
             frmVentas fVentas = new frmVentas();
             fVentas.ShowDialog();
         }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmConsultaClientes fConsultaClientes = new frmConsultaClientes();
+            fConsultaClientes.ShowDialog();
+        }
+
+        private void vendedoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmConsultaVendedores fConsultaVendedores = new frmConsultaVendedores();
+            fConsultaVendedores.ShowDialog();
+        }
+
+        private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmConsultaVentas fConsultaVentas = new frmConsultaVentas();
+            fConsultaVentas.ShowDialog();
+        }
     }
 }
